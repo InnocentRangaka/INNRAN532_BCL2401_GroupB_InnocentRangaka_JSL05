@@ -19,59 +19,46 @@ const songs = [
 const guardians = {
     "Star-Lord": "Rock",
     "Gamora": "Pop",
-    "Drax": "R&B",
+
     // Add preferences for Drax, Rocket, and Groot
+    "Drax": "R&B",
 };
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
     // Use the map() function to create playlists for each Guardian
 
-    const playlistsContainer = document.getElementById("playlists")
-        
+    const playlistsContainer = document.getElementById("playlists"),
+        allGuardians = Object.keys(guardians);
 
-    const allGuardians = Object.keys(guardians),
-        genreListByGuardians = Object.values(guardians),
-        playlists = allGuardians.map(guardianName => {
-            const [PlayListTitle, divElement, ulElement] = ['h2', 'div', 'ul'].map(element => document.createElement(element));
+    allGuardians.map(guardianName => {
+        const [PlayListTitle, playlistDiv, songDiv] = ['h2', 'div', 'div'].map(element => document.createElement(element));
 
-            PlayListTitle.textContent = `${guardianName}'s Playlist`;
+        PlayListTitle.textContent = `${guardianName}'s Playlist`;
+
+        const songList = songs.filter((song) => song.genre === guardians[guardianName]);
+
+        songList.map(song => {
+            const [songElement, spanElement] = ['div', 'span'].map(element => document.createElement(element)),
+                songName = song['title'],
+                artist = song['artist'];
             
-            // console.log(guardians[genre] + " | " + spanElement);
+            spanElement.textContent = songName;
+            spanElement.classList.add("song-title");
 
-            const songList = songs.filter((song) => song.genre === guardians[guardianName]);
+            songElement.textContent = ` by ${artist}`;
+            songElement.prepend(spanElement);
+            songElement.classList.add("song");
 
-            // songList.forEach(song => {
-            //     const title = song['title'],
-            //     title = song['title'];;
-            //     console.log(title)
-            // });
-
-            console.log(songList)
-            songList.map(song => {
-                const [liElement, spanElement] = ['li', 'span'].map(element => document.createElement(element)),
-                    songName = song['title'],
-                    artist = song['artist'];
-                    console.log(song['title'])
-                
-                spanElement.textContent = songName;
-                spanElement.classList.add("song-title");
-
-                liElement.textContent = ` by ${artist}`;
-                liElement.prepend(spanElement);
-                liElement.classList.add("song");
-
-                ulElement.appendChild(liElement);
-            });
-
-            divElement.appendChild(PlayListTitle);
-            divElement.appendChild(ulElement);
-            divElement.classList.add("playlist");
-
-            playlistsContainer.appendChild(divElement);
+            songDiv.appendChild(songElement);
         });
 
-        
+        playlistDiv.appendChild(PlayListTitle);
+        playlistDiv.appendChild(songDiv);
+        playlistDiv.classList.add("playlist");
+
+        playlistsContainer.appendChild(playlistDiv);
+    });      
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
