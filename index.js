@@ -26,30 +26,38 @@ const guardians = {
 function generatePlaylist(guardians, songs) {
     // Use the map() function to create playlists for each Guardian
 
-    const [divElement, ulElement] = ['div', 'ul'].map(element => document.createElement(element));
-    console.log(ulElement)
-    // const [divContainer, listContainer, listItem, songSpan] = elements.every((element) => document.createElement(element));
+    const [PlayListTitle, divElement, ulElement] = ['h1', 'div', 'ul'].map(element => document.createElement(element));
+    console.log(ulElement);
 
     const allGuardians = Object.keys(guardians),
-    genreListByGuardians = Object.values(guardians);
-    const playlists = allGuardians.map(genre => {
-        const [liElement, spanElement] = ['li', 'span'].map(element => document.createElement(element));
+        genreListByGuardians = Object.values(guardians);
+        playlists = allGuardians.map(genre => {
+            
 
-        spanElement.classList.add();
-        console.log(guardians[genre] + " | " + spanElement);
+            // 
+            // console.log(guardians[genre] + " | " + spanElement);
 
-        const songList = songs.filter((song) => song.genre === guardians[genre]);
+            const songList = songs.filter((song) => song.genre === guardians[genre]);
 
-        // songList.forEach(song => {
-        //     const title = song['title'],
-        //     title = song['title'];;
-        //     console.log(title)
-        // });
-        songList.map(song => {
-            console.log(song)
-        });
+            // songList.forEach(song => {
+            //     const title = song['title'],
+            //     title = song['title'];;
+            //     console.log(title)
+            // });
+            songList.map(song => {
+                const [liElement, spanElement] = ['li', 'span'].map(element => document.createElement(element)),
+                    songName = song['title'],
+                    artist = song['artist'];
+                
+                spanElement.classList.add();
+                spanElement.textContent = songName;
+
+                liElement.textContent = ` by ${artist}`;
+                liElement.prepend(spanElement);
+                console.log(liElement)
+            });
         
-    })
+        })
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
