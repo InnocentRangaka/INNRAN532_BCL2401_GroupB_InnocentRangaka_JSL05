@@ -10,7 +10,23 @@ const songs = [
     { title: "Ain't No Mountain High Enough", artist: "Marvin Gaye & Tammi Terrell", genre: "R&B" },
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
+    { title: "Can't Stop the Feeling!", artist: "Justin Timberlake", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
+    { title: "Let's Stay Together", artist: "Al Green", genre: "R&B" },
+    { title: "My Girl", artist: "The Temptations", genre: "R&B" },
+    { title: "Le Freak", artist: "Chic", genre: "Disco" },
+    { title: "Good Times", artist: "Chic", genre: "Disco" },
+    { title: "I Feel Love", artist: "Donna Summer", genre: "Disco"},
+    { title: "What a Wonderful World", artist: "Louis Armstrong", genre: "Jazz" },
+    { title: "Take Five", artist: "The Dave Brubeck Quartet", genre: "Jazz" },
+    { title: "Sing, Sing, Sing", artist: "Benny Goodman", genre: "Jazz" },
+    
+    { title: "Respect", artist: "Aretha Franklin", genre: "R&B" },
+  { title: "Dancing Queen", artist: "ABBA", genre: "Disco" },
+  { title: "More Than a Feeling", artist: "Boston", genre: "Disco" },
+  { title: "Fly Me to the Moon", artist: "Frank Sinatra", genre: "Jazz" },
+  { title: "September", artist: "Earth, Wind & Fire", genre: "R&B" },
+  { title: "It Had to Be You", artist: "Harry Connick Jr.", genre: "Jazz" },
     // Feel free to add even more songs
 ];
 
@@ -22,6 +38,8 @@ const guardians = {
 
     // Add preferences for Drax, Rocket, and Groot
     "Drax": "R&B",
+    "Rocket": "Disco",
+    "Groot": "Jazz"
 };
 
 // Function to generate playlist based on preferred genre
