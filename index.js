@@ -46,35 +46,50 @@ const guardians = {
 function generatePlaylist(guardians, songs) {
     // Use the map() function to create playlists for each Guardian
 
+    // 1. Get references to essential elements
+     // Get the container for playlists
+     // Get an array of guardian names from the guardians object
     const playlistsContainer = document.getElementById("playlists"),
         allGuardians = Object.keys(guardians);
 
+    // Iterate through each guardian
     allGuardians.map(guardianName => {
+        // Create multiple elements efficiently
         const [PlayListTitle, playlistDiv, songDiv] = ['h2', 'div', 'div'].map(element => document.createElement(element));
 
+        // Set the playlist title
+        // Set the text content for the title
         PlayListTitle.textContent = `${guardianName}'s Playlist`;
 
+        // Filter songs based on the guardian's preference
+        // Filter songs matching the guardian's genre
         const songList = songs.filter((song) => song.genre === guardians[guardianName]);
 
+        // Iterate through each filtered song
         songList.map(song => {
+            // Create elements for song and title
             const [songElement, spanElement] = ['div', 'span'].map(element => document.createElement(element)),
-                songName = song['title'],
-                artist = song['artist'];
+                songName = song['title'],  // Extract song title
+                artist = song['artist']; // Extract artist name
             
-            spanElement.textContent = songName;
-            spanElement.classList.add("song-title");
+            // Set song title and artist details
+            spanElement.textContent = songName; // Set song title in the span
+            spanElement.classList.add("song-title"); // Add class for styling
 
-            songElement.textContent = ` by ${artist}`;
-            songElement.prepend(spanElement);
-            songElement.classList.add("song");
+            songElement.textContent = ` by ${artist}`; // Set artist details in the song element
+            songElement.prepend(spanElement); // Prepend the span (title) to the song element
+            songElement.classList.add("song"); // Add class for styling
 
-            songDiv.appendChild(songElement);
+            // Append song element to song list
+            songDiv.appendChild(songElement); // Add the song element to the song list
         });
 
-        playlistDiv.appendChild(PlayListTitle);
-        playlistDiv.appendChild(songDiv);
-        playlistDiv.classList.add("playlist");
+        playlistDiv.appendChild(PlayListTitle); // Add title to the playlist container
+        playlistDiv.appendChild(songDiv); // Add song list to the playlist container
+        playlistDiv.classList.add("playlist"); // Add class for styling
 
+        // Append the playlist to the main container
+        // Add the complete playlist to the playlists container
         playlistsContainer.appendChild(playlistDiv);
     });      
 }
